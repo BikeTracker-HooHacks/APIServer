@@ -1,0 +1,22 @@
+{
+  "name": "apiserver",
+  "version": "1.0.0",
+  "description": "API Server for GPS bike tracker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BikeTracker-HooHacks/APIServer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BikeTracker-HooHacks/APIServer/issues"
+  },
+  "homepage": "https://github.com/BikeTracker-HooHacks/APIServer#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
