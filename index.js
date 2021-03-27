@@ -1,4 +1,3 @@
-
 const express = require('express')
 const gpsRoutes = require('./routes/gps')
 const userRoutes = require('./routes/user')
@@ -6,7 +5,7 @@ const trackerRoutes = require('./routes/tracker')
 require('dotenv').config()
 
 const app = express()
-const port = 8000
+const port = process.env.PORT
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
