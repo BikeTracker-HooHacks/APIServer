@@ -5,7 +5,7 @@ router.get('/', (req, res) => {
     res.status(200).json({ message: 'Connected to User endpoint!' });
 });
 
-router.post('/createUser', async (req, res) => {
+router.post('/create', async (req, res) => {
     username = req.body.username;
     fullname = req.body.name;
     password = req.body.password;
@@ -19,7 +19,7 @@ router.post('/createUser', async (req, res) => {
     }
 })
 
-router.post('/signin', async (req, res) => {
+router.post('/login', async (req, res) => {
     username = req.body.username;
     password = req.body.password;
     if(username && password){
@@ -29,7 +29,7 @@ router.post('/signin', async (req, res) => {
 
 })
 
-router.post('/signout', async (req, res) => {
+router.post('/logout', async (req, res) => {
     req.session.destroy( (err) =>{
         if (err) res.send( {"error": "Could not sign out."} );
         else{

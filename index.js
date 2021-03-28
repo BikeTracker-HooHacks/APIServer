@@ -17,7 +17,7 @@ app.use(express.urlencoded({extended: true}));
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
-})
+});
 
 app.use(session({
   secret: sessionSecret,
@@ -32,7 +32,7 @@ app.use('/tracker', trackerRoutes);
 
 const server = app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
-})
+});
 
 // db.createUser("test@test.com", "Jason", "testPassword");
 // db.signIn("test@test.com", "testPassword");
@@ -44,4 +44,4 @@ process.on('SIGINT', () => {
   console.log("Shutting down...");
   db.close();
   server.close();
-})
+});
