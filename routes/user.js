@@ -14,20 +14,22 @@ router.post('/create', async (req, res) => {
         result = await db.createUser(username, fullname, password);
         res.send(result);
     } else {
-        res.send("Username, password, or name not provided.");
+        res.status(400);
+        res.send( { error: "Username, password, or name not provided." } );
     }
 });
 
 router.post('/login', async (req, res) => {
     username = req.body.username;
     password = req.body.password;
+    console.log(JSON.stringify(req.body));
     console.log(username + ':' + password);
     if (username && password) {
         result = await db.signIn(username, password, req);
         res.send(result);
     } else {
         res.status(403);
-        res.send({ error: 'Invalid credentials provided.' });
+        res.send( { error: 'Invalid credentials provided.' } );
     }
 
 });

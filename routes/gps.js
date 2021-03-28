@@ -12,7 +12,7 @@ router.post("/data", (req, res) => {
         let reqDate = req.body.date;
         let reqTime = req.body.time;
         let reqLat = req.body.lat;
-        let reqLong = req.body.long;
+        let reqLng = req.body.lng;
         const jsDate = new Date(reqDate + "T" + reqTime+"Z");
         console.log(jsDate.getTime() / 1000);
         res.status(200);
