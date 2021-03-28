@@ -50,7 +50,8 @@ routes.get('/:id', (req, res) => {
 });
 
 routes.post('/:id', (req, res) => {
-    
+    res.status(200);
+    res.send('ok');
 });
 
 module.exports = routes;

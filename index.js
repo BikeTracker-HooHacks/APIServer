@@ -1,5 +1,8 @@
 const express = require('express');
 const session = require('express-session');
+const cors = require('cors');
+
+
 require('dotenv').config();
 const db = require('./db');
 const gpsRoutes = require('./routes/gps');
@@ -11,6 +14,8 @@ db.connect();
 const app = express();
 const port = process.env.PORT;
 const sessionSecret = process.env.SESSIONSECRET;
+
+app.use(cors())
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));

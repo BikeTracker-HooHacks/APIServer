@@ -10,29 +10,33 @@ router.post('/create', async (req, res) => {
     fullname = req.body.name;
     password = req.body.password;
 
-    if(username && password && fullname){
+    if (username && password && fullname) {
         result = await db.createUser(username, fullname, password);
         res.send(result);
-    }
-    else{
+    } else {
         res.send("Username, password, or name not provided.");
     }
-})
+});
 
 router.post('/login', async (req, res) => {
     username = req.body.username;
     password = req.body.password;
-    if(username && password){
-        result = await db.signIn(username, password, req)
+    console.log(username + ':' + password);
+    if (username && password) {
+        result = await db.signIn(username, password, req);
         res.send(result);
+    } else {
+        res.status(403);
+        res.send({ error: 'Invalid credentials provided.' });
     }
 
-})
+});
 
 router.post('/logout', async (req, res) => {
     req.session.destroy( (err) =>{
-        if (err) res.send( {"error": "Could not sign out."} );
-        else{
+        if (err) {
+            res.send( {"error": "Could not sign out."} );
+        } else {
             req.session = null;
             res.send( {"success": true} );
         }
