@@ -1,9 +1,9 @@
-'use strict'
 const { Client } = require('cassandra-driver');
 
 async function run() {
+      console.log("DB Security Path:" ,process.env.DB_SECURITY_PATH)
       const client = new Client({
-              cloud: { secureConnectBundle: 'path/to/secure-connect-database_name.zip' },
+              cloud: { secureConnectBundle: process.env.DB_SECURITY_PATH },
               credentials: { username: process.env.CLIENT_ID, password: process.env.CLIENT_SECRET }
             });
 
