@@ -29,4 +29,14 @@ router.post('/signin', async (req, res) => {
 
 })
 
+router.post('/signout', async (req, res) => {
+    req.session.destroy( (err) =>{
+        if (err) res.send( {"error": "Could not sign out."} );
+        else{
+            req.session = null;
+            res.send( {"success": true} );
+        }
+    });  
+})
+
 module.exports = router;

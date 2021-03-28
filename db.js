@@ -74,9 +74,24 @@ async function signIn(username, password, request){
       )
   }
 
+async function addData(mac, time, lat, long){
+      return new Promise (data => 
+            bcrypt.hash(password, saltRounds, (err, hash) => {
+                  client.execute("INSERT INTO users (email, name, password) VALUES (?, ?, ?) IF NOT EXISTS", [username, name, hash], (err) => {
+                        console.log(err);
+                        if(err){
+                              console.log("Error creating user.")
+                        }
+                        data(err);
+                  })
+            })
+      )
+}
+
 module.exports = {
       connect,
       close,
       createUser,
-      signIn
+      signIn,
+      addData
 }
