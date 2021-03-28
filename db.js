@@ -26,10 +26,8 @@ async function close(){
 }
 
 async function createUser(username, name, password){
-      await new Promise(resolve => setTimeout(resolve, 5000));
       return new Promise (data => 
             bcrypt.hash(password, saltRounds, (err, hash) => {
-                  console.log(username, name, hash);
                   client.execute("INSERT INTO users (email, name, password) VALUES (?, ?, ?) IF NOT EXISTS", [username, name, hash], (err) => {
                         console.log(err);
                         if(err){
@@ -42,10 +40,8 @@ async function createUser(username, name, password){
 }
 
 async function signIn(username, password, request){
-      await new Promise(resolve => setTimeout(resolve, 5000));
       return new Promise (data =>
           client.execute("SELECT * FROM users WHERE email = ?", [username]).then( (result) => {
-              console.log(result);
               if (result.rowLength > 0){
                   // Check password
                   bcrypt.compare(password, result.rows[0].password, (err, check) => {

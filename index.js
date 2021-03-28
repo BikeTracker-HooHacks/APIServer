@@ -1,10 +1,10 @@
 const express = require('express');
 const session = require('express-session');
+require('dotenv').config();
+const db = require('./db');
 const gpsRoutes = require('./routes/gps');
 const userRoutes = require('./routes/user');
 const trackerRoutes = require('./routes/tracker');
-require('dotenv').config();
-const db = require('./db');
 
 db.connect();
 

@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const db = require('../db');
 
 router.get('/', (req, res) => {
     res.status(200).json({ message: 'Connected to User endpoint!' });
@@ -6,13 +7,15 @@ router.get('/', (req, res) => {
 
 router.post('/createUser', async (req, res) => {
     username = req.body.username;
+    fullname = req.body.name;
     password = req.body.password;
-    if(username && password){
-        result = await db.createUser(username, password);
+
+    if(username && password && fullname){
+        result = await db.createUser(username, fullname, password);
         res.send(result);
     }
     else{
-        res.send("No username or password provided.");
+        res.send("Username, password, or name not provided.");
     }
 })
 
@@ -26,4 +29,4 @@ router.post('/signin', async (req, res) => {
 
 })
 
-module.exports = routes;
+module.exports = router;
